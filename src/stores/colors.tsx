@@ -1,35 +1,67 @@
-import { createUniqueId } from "solid-js";
+import {
+  createUniqueId,
+  createContext,
+  useContext,
+  type ParentComponent,
+} from "solid-js";
 import { createStore } from "solid-js/store";
 
+export const formats = ["hex", "rgb", "hsl", "oklab", "oklch"] as const;
+export type Format = (typeof formats)[number];
+
 export function createColorStore() {
-  const [colors, setColors] = createStore([
-    {
-      id: createUniqueId(),
-      code: "#ffffff",
-    },
-  ]);
+  const [state, setState] = createStore({
+    colors: [
+      {
+        id: createUniqueId(),
+        code: "#bb3e3e",
+      },
+    ],
+    format: "hex" as Format,
+  });
 
   return [
-    colors,
+    state,
     {
-      update(id: string, newCode: string) {
-        setColors(
-          (color) => color.id === id,
-          "code",
-          () => newCode
-        );
+      updateColor(id: string, newCode: string) {
+        setState("colors", (color) => color.id === id, "code", newCode);
       },
 
       add() {
-        setColors([
+        setState("colors", (colors) => [
           ...colors,
           { id: createUniqueId(), code: colors.at(-1)!.code },
         ]);
       },
 
       remove(id: string) {
-        setColors(colors.filter((color) => color.id !== id));
+        setState("colors", (colors) =>
+          colors.filter((color) => color.id !== id)
+        );
+      },
+
+      setFormat(format: Format | ((f: Format) => Format)) {
+        setState("format", format);
       },
     },
   ] as const;
+}
+
+export const makeColorsContext = () => createColorStore();
+
+type ColorsContextType = ReturnType<typeof makeColorsContext>;
+export const ColorsContext = createContext<ColorsContextType>();
+
+export const ColorsProvider: ParentComponent = (props) => {
+  const colorStore = createColorStore();
+
+  return (
+    <ColorsContext.Provider value={colorStore}>
+      {props.children}
+    </ColorsContext.Provider>
+  );
+};
+
+export function useColors() {
+  return useContext(ColorsContext)!;
 }

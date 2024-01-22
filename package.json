@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@iconify-icon/solid": "1.0.8",
     "solid-js": "^1.8.7"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.26.2",
+    "colorjs.io": "0.4.5",
     "prettier": "^3.2.2",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
