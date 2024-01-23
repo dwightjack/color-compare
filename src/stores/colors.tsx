@@ -40,8 +40,17 @@ export function createColorStore() {
         );
       },
 
-      setFormat(format: Format | ((f: Format) => Format)) {
+      setFormat(format: Format) {
         setState("format", format);
+      },
+      toggleFormat() {
+        setState("format", (current) => {
+          let next = formats.indexOf(current) + 1;
+          if (next === formats.length) {
+            next = 0;
+          }
+          return formats[next];
+        });
       },
     },
   ] as const;
