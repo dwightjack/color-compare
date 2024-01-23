@@ -1,9 +1,10 @@
-import { JSX, type Component } from "solid-js";
+import { JSX, type Component, Switch, Match } from "solid-js";
 import { HStack, styled } from "../../styled-system/jsx";
 import { visuallyHidden } from "../../styled-system/patterns";
 import { overflowEllipsis } from "../../styled-system/recipes";
 import { Icon } from "@iconify-icon/solid";
 import { Button } from "./Button";
+import { createCopyToClipboard } from "../signals/copy";
 
 export interface ColorPickerProps {
   inputColor: string;
@@ -13,6 +14,8 @@ export interface ColorPickerProps {
 }
 
 export const ColorPicker: Component<ColorPickerProps> = (props) => {
+  const [status, writeClipboardText] = createCopyToClipboard();
+
   return (
     <HStack
       width="min(16em, 100%)"
@@ -31,7 +34,6 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
         variant="transparent"
         shape="square"
         width="1lh"
-        flexShrink="0"
         onClick={props.onColorSpaceToggle}
       >
         <span class={visuallyHidden()}>Click to toggle the color space</span>
@@ -61,6 +63,22 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
           onInput={props.onInput}
         />
       </styled.label>
+      <Button
+        variant="transparent"
+        shape="square"
+        aria-label="Copy"
+        width="1lh"
+        onClick={() => writeClipboardText(props.color)}
+      >
+        <Switch fallback={<Icon icon="heroicons-solid:clipboard" />}>
+          <Match when={status() === "success"}>
+            <Icon icon="heroicons-solid:check-circle" />
+          </Match>
+          <Match when={status() === "error"}>
+            <Icon icon="heroicons-solid:heroicons-solid:x-circle" />
+          </Match>
+        </Switch>
+      </Button>
     </HStack>
   );
 };

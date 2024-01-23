@@ -34,11 +34,13 @@ export const Button = styled("button", {
         borderRadius: "full",
         display: "grid",
         placeItems: "center",
+        flexShrink: 0,
       },
       square: {
         aspectRatio: "square",
         display: "grid",
         placeItems: "center",
+        flexShrink: 0,
       },
     },
   },
