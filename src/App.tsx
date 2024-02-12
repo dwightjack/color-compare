@@ -1,24 +1,34 @@
 import { For } from "solid-js";
-import { Grid, styled, Flex } from "../styled-system/jsx";
+import { styled } from "../styled-system/jsx";
+
 import "./App.css";
-import { Button } from "./components/Button";
 import { ColorBox } from "./components/ColorBox";
 import { useColors } from "./stores/colors";
+import { Footer } from "./layout/Footer";
 function App() {
-  const [state, actions] = useColors();
+  const [state] = useColors();
+
   return (
-    <styled.main h="100vh" display="flex" flexDir="column">
-      <Grid flexGrow="1" gap={0} minChildWidth="33.333%">
+    <main>
+      <styled.div
+        h="100vh"
+        display="grid"
+        smDown={{
+          gridAutoRows: "minmax(33.33vh, 1fr)",
+        }}
+        sm={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(33.33%, 1fr))",
+          gridAutoRows: "minmax(33.33vh, 1fr)",
+        }}
+      >
         <For each={state.colors}>
           {(color, idx) => (
             <ColorBox color={color.code} id={color.id} removable={idx() > 0} />
           )}
         </For>
-      </Grid>
-      <Flex gap={4} bg="zinc.200" p="3">
-        <Button onClick={actions.add}>Add Color</Button>
-      </Flex>
-    </styled.main>
+      </styled.div>
+      <Footer />
+    </main>
   );
 }
 
