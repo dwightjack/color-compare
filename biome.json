@@ -4,7 +4,8 @@
 		"enabled": true
 	},
 	"files": {
-		"ignore": ["styled-system"]
+		"ignore": ["styled-system"],
+		"ignoreUnknown": true
 	},
 	"linter": {
 		"enabled": true,

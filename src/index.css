@@ -15,4 +15,17 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  body {
+    --color-checker: hsl(0 0% 0% /0.102);
+    background-color: #fff;
+    background-image: conic-gradient(
+      transparent 90deg,
+      var(--color-checker) 0 180deg,
+      transparent 0 270deg,
+      var(--color-checker) 0
+    );
+    background-size: 20px 20px;
+    background-attachment: fixed;
+  }
 }

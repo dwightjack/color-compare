@@ -1,8 +1,8 @@
 import { Icon } from '@iconify-icon/solid';
 import Color from 'colorjs.io';
 import { type Component, Show } from 'solid-js';
-import { Box, styled } from '../../styled-system/jsx';
-import { center } from '../../styled-system/patterns';
+import { css } from '../../styled-system/css';
+import { styled } from '../../styled-system/jsx';
 import { token } from '../../styled-system/tokens';
 import { useColors } from '../stores/colors';
 import { Button } from './Button';
@@ -15,6 +15,19 @@ const formatMapping: Partial<Record<Formats, { space: string }>> = {
 	hex: { space: 'srgb' },
 	rgb: { space: 'srgb' },
 };
+
+const Box = styled('div', {
+	base: {
+		bgColor: 'var(--bg-color)',
+		p: '6',
+		gridTemplate: "'. full .' auto / 1fr min(16em, 100%) 1fr",
+		alignItems: 'center',
+		display: 'grid',
+		'&>*': {
+			gridArea: 'full',
+		},
+	},
+});
 
 export const ColorBox: Component<{
 	color: string;
@@ -42,28 +55,20 @@ export const ColorBox: Component<{
 	};
 
 	return (
-		<Box
-			bgColor="var(--bg-color)"
-			p="6"
-			class={center()}
-			style={{ '--bg-color': props.color, '--text-color': textColor() }}
-		>
-			<styled.div pos="relative" w="full">
-				<Show when={props.removable}>
-					<Button
-						variant="contrast"
-						shape="circle"
-						onClick={() => actions.remove(props.id)}
-						aria-label="Remove"
-						w="6"
-						pos="absolute"
-						insetBlockEnd="100%"
-						insetInlineEnd="100%"
-					>
-						<Icon icon="heroicons-solid:x" />
-					</Button>
-				</Show>
-			</styled.div>
+		<Box style={{ '--bg-color': props.color, '--text-color': textColor() }}>
+			<Show when={props.removable}>
+				<Button
+					variant="contrast"
+					shape="circle"
+					w={6}
+					onClick={() => actions.remove(props.id)}
+					justifySelf="end"
+					translate="100% -100%"
+				>
+					<span class={css({ srOnly: true })}>Remove</span>
+					<Icon icon="heroicons-solid:x" />
+				</Button>
+			</Show>
 			<ColorPicker
 				inputColor={props.color}
 				color={colorOutput()}

@@ -18,7 +18,6 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 
 	return (
 		<HStack
-			width="min(16em, 100%)"
 			bgt="white/80"
 			gap="0"
 			borderWidth="2px"
