@@ -2,13 +2,23 @@
 
 @layer base {
   :root {
+
+    --color-text: oklch(0.32 0 0);
+    --color-background: oklch(1 0 0);
+    --color-canvas-checker: oklch(0 0 0 / 0.1);
+
+    @media screen and (prefers-color-scheme: dark) {
+      --color-text: oklch(0.8 0 0);
+      --color-background: oklch(0.3 0 0);
+      --color-canvas-checker: oklch(0.7 0 0 / 0.1);
+    }
+
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
     color-scheme: light dark;
-    color: #333;
-    background-color: #fff;
+    color: var(--color-text);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -17,15 +27,19 @@
   }
 
   body {
-    --color-checker: hsl(0 0% 0% /0.102);
-    background-color: #fff;
+    background-color: var(--color-background);
     background-image: conic-gradient(
       transparent 90deg,
-      var(--color-checker) 0 180deg,
+      var(--color-canvas-checker) 0 180deg,
       transparent 0 270deg,
-      var(--color-checker) 0
+      var(--color-canvas-checker) 0
     );
     background-size: 20px 20px;
     background-attachment: fixed;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0 }
+    to   { opacity: 1 }
   }
 }

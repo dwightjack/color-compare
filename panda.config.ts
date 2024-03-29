@@ -17,6 +17,13 @@ export default defineConfig({
 			recipes: {
 				overflowEllipsis,
 			},
+			tokens: {
+				animations: {
+					fadeInScroll: {
+						value: 'fade-in auto linear both',
+					},
+				},
+			},
 		},
 	},
 
@@ -25,34 +32,34 @@ export default defineConfig({
 	// The output directory for your css system
 	outdir: 'styled-system',
 
-	utilities: {
-		// https://github.com/chakra-ui/panda/discussions/862
-		backgroundColorTransparentize: {
-			shorthand: ['bgct', 'bgt'],
-			property: 'backgroundColor',
-			className: 'transparentize_bgc',
-			transform: (value, { token, ...other }) => {
-				const lastIndex = value?.lastIndexOf('/');
-				if (!lastIndex) {
-					return {};
-				}
-				if (typeof value?.substring !== 'function') {
-					return {};
-				}
-				const color = value?.substring(0, lastIndex);
-				if (!color) {
-					return {};
-				}
-				const amount = value.split('/').at(-1);
-				const colorValue = token(`colors.${color}`);
+	// utilities: {
+	// 	// https://github.com/chakra-ui/panda/discussions/862
+	// 	backgroundColorTransparentize: {
+	// 		shorthand: ['bgct', 'bgt'],
+	// 		property: 'backgroundColor',
+	// 		className: 'transparentize_bgc',
+	// 		transform: (value, { token, ...other }) => {
+	// 			const lastIndex = value?.lastIndexOf('/');
+	// 			if (!lastIndex) {
+	// 				return {};
+	// 			}
+	// 			if (typeof value?.substring !== 'function') {
+	// 				return {};
+	// 			}
+	// 			const color = value?.substring(0, lastIndex);
+	// 			if (!color) {
+	// 				return {};
+	// 			}
+	// 			const amount = value.split('/').at(-1);
+	// 			const colorValue = token(`colors.${color}`);
 
-				const amountValue = token(`opacity.${amount}`)
-					? (token(`opacity.${amount}`) as unknown as number) * 100
-					: `${amount}%`;
-				return {
-					backgroundColor: `color-mix(in srgb, transparent ${amountValue}, ${colorValue})`,
-				};
-			},
-		},
-	},
+	// 			const amountValue = token(`opacity.${amount}`)
+	// 				? (token(`opacity.${amount}`) as unknown as number) * 100
+	// 				: `${amount}%`;
+	// 			return {
+	// 				backgroundColor: `color-mix(in srgb, transparent ${amountValue}, ${colorValue})`,
+	// 			};
+	// 		},
+	// 	},
+	// },
 });

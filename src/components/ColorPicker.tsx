@@ -18,7 +18,7 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 
 	return (
 		<HStack
-			bgt="white/80"
+			bg="white/20"
 			gap="0"
 			borderWidth="2px"
 			color="var(--text-color)"
