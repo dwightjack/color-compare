@@ -1,24 +1,26 @@
 {
-  "name": "color-compare",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "prepare": "panda codegen",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@iconify-icon/solid": "1.0.8",
-    "solid-js": "^1.8.7"
-  },
-  "devDependencies": {
-    "@pandacss/dev": "^0.26.2",
-    "colorjs.io": "0.4.5",
-    "prettier": "^3.2.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-solid": "^2.8.0"
-  }
+	"name": "color-compare",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"prepare": "panda codegen",
+		"dev": "vite",
+		"lint": "biome check .",
+		"build": "tsc && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@iconify-icon/solid": "2.0.0",
+		"solid-js": "^1.8.16"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.6.3",
+		"@pandacss/dev": "^0.36.1",
+		"colorjs.io": "0.5.0",
+		"lefthook": "1.6.7",
+		"typescript": "^5.4.3",
+		"vite": "^5.2.6",
+		"vite-plugin-solid": "^2.10.2"
+	}
 }

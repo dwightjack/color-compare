@@ -1,16 +1,18 @@
 /* @refresh reload */
-import { render } from "solid-js/web";
-import { ColorsProvider } from "./stores/colors";
-import "./index.css";
-import App from "./App";
+import { render } from 'solid-js/web';
+import App from './App';
+import './index.css';
+import { ColorsProvider } from './stores/colors';
 
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 
-render(
-  () => (
-    <ColorsProvider>
-      <App />
-    </ColorsProvider>
-  ),
-  root!
-);
+if (root) {
+	render(
+		() => (
+			<ColorsProvider>
+				<App />
+			</ColorsProvider>
+		),
+		root,
+	);
+}

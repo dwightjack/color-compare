@@ -1,59 +1,60 @@
 import {
-  createUniqueId,
-  createContext,
-  useContext,
-  type ParentComponent,
-} from "solid-js";
-import { createStore } from "solid-js/store";
+	type ParentComponent,
+	createContext,
+	createUniqueId,
+	useContext,
+} from 'solid-js';
+import { createStore } from 'solid-js/store';
 
-export const formats = ["hex", "rgb", "hsl", "oklab", "oklch"] as const;
+export const formats = ['hex', 'rgb', 'hsl', 'oklab', 'oklch'] as const;
 export type Format = (typeof formats)[number];
 
 export function createColorStore() {
-  const [state, setState] = createStore({
-    colors: [
-      {
-        id: createUniqueId(),
-        code: "#bb3e3e",
-      },
-    ],
-    format: "hex" as Format,
-  });
+	const [state, setState] = createStore({
+		colors: [
+			{
+				id: createUniqueId(),
+				code: '#bb3e3e',
+			},
+		],
+		format: 'hex' as Format,
+	});
 
-  return [
-    state,
-    {
-      updateColor(id: string, newCode: string) {
-        setState("colors", (color) => color.id === id, "code", newCode);
-      },
+	return [
+		state,
+		{
+			updateColor(id: string, newCode: string) {
+				setState('colors', (color) => color.id === id, 'code', newCode);
+			},
 
-      add() {
-        setState("colors", (colors) => [
-          ...colors,
-          { id: createUniqueId(), code: colors.at(-1)!.code },
-        ]);
-      },
+			add() {
+				setState('colors', (colors) => [
+					...colors,
+					// biome-ignore lint/style/noNonNullAssertion: <explanation>
+					{ id: createUniqueId(), code: colors.at(-1)!.code },
+				]);
+			},
 
-      remove(id: string) {
-        setState("colors", (colors) =>
-          colors.filter((color) => color.id !== id)
-        );
-      },
+			remove(id: string) {
+				setState('colors', (colors) =>
+					colors.filter((color) => color.id !== id),
+				);
+			},
 
-      setFormat(format: Format) {
-        setState("format", format);
-      },
-      toggleFormat() {
-        setState("format", (current) => {
-          let next = formats.indexOf(current) + 1;
-          if (next === formats.length) {
-            next = 0;
-          }
-          return formats[next];
-        });
-      },
-    },
-  ] as const;
+			setFormat(format: Format) {
+				setState('format', format);
+			},
+			toggleFormat() {
+				setState('format', (current) => {
+					let next = formats.indexOf(current) + 1;
+					if (next === formats.length) {
+						next = 0;
+					}
+					return formats[next];
+				});
+			},
+		},
+	] as const;
 }
 
 export const makeColorsContext = () => createColorStore();
@@ -62,15 +63,16 @@ type ColorsContextType = ReturnType<typeof makeColorsContext>;
 export const ColorsContext = createContext<ColorsContextType>();
 
 export const ColorsProvider: ParentComponent = (props) => {
-  const colorStore = createColorStore();
+	const colorStore = createColorStore();
 
-  return (
-    <ColorsContext.Provider value={colorStore}>
-      {props.children}
-    </ColorsContext.Provider>
-  );
+	return (
+		<ColorsContext.Provider value={colorStore}>
+			{props.children}
+		</ColorsContext.Provider>
+	);
 };
 
 export function useColors() {
-  return useContext(ColorsContext)!;
+	// biome-ignore lint/style/noNonNullAssertion: <explanation>
+	return useContext(ColorsContext)!;
 }
