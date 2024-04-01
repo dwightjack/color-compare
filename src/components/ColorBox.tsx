@@ -60,7 +60,7 @@ export const ColorBox: Component<{
 				<Button
 					variant="contrast"
 					shape="circle"
-					w={6}
+					inlineSize={6}
 					onClick={() => actions.remove(props.id)}
 					justifySelf="end"
 					translate="100% -100%"

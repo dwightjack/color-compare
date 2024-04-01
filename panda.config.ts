@@ -17,13 +17,6 @@ export default defineConfig({
 			recipes: {
 				overflowEllipsis,
 			},
-			tokens: {
-				animations: {
-					fadeInScroll: {
-						value: 'fade-in auto linear both',
-					},
-				},
-			},
 		},
 	},
 

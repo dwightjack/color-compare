@@ -12,6 +12,12 @@ export const Button = styled('button', {
 				bg: 'blue.500',
 				color: 'white',
 				_hover: { bg: 'blue.600' },
+				_focusVisible: {
+					outlineColor: 'blue.500',
+				},
+				_osDark: {
+					color: 'zinc.800',
+				},
 			},
 			contrast: {
 				bg: 'zinc.100',
@@ -22,6 +28,9 @@ export const Button = styled('button', {
 			transparent: {
 				bg: 'transparent',
 				color: 'current',
+				_focusVisible: {
+					outlineColor: 'currentcolor',
+				},
 			},
 		},
 		shape: {

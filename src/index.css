@@ -6,6 +6,7 @@
     --color-text: oklch(0.32 0 0);
     --color-background: oklch(1 0 0);
     --color-canvas-checker: oklch(0 0 0 / 0.1);
+    --outline-focus: 2px solid var(--color-text);
 
     @media screen and (prefers-color-scheme: dark) {
       --color-text: oklch(0.8 0 0);
@@ -13,7 +14,7 @@
       --color-canvas-checker: oklch(0.7 0 0 / 0.1);
     }
 
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -38,8 +39,13 @@
     background-attachment: fixed;
   }
 
-  @keyframes fade-in {
-    from { opacity: 0 }
-    to   { opacity: 1 }
+  @keyframes fade-scroll {
+    from { opacity: 1  }
+    to   { opacity: 0 }
+  }
+
+  :focus-visible {
+    outline: var(--outline-focus);
+    outline-offset: 2px;
   }
 }

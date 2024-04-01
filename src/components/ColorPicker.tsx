@@ -32,7 +32,7 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 			<Button
 				variant="transparent"
 				shape="square"
-				width="1lh"
+				inlineSize="1lh"
 				onClick={props.onColorSpaceToggle}
 			>
 				<span class={visuallyHidden()}>Click to toggle the color space</span>
@@ -40,8 +40,8 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 			</Button>
 			<styled.span
 				display="block"
-				w="1"
-				h="0.5lh"
+				inlineSize="1"
+				blockSize="0.5lh"
 				borderColor="inherit"
 				borderInlineEndWidth="1"
 				alignSelf="center"
@@ -51,6 +51,11 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 				cursor="pointer"
 				paddingInlineStart="4"
 				class={overflowEllipsis()}
+				_focusWithin={{
+					outline: 'var(--outline-focus)',
+					outlineColor: 'currentcolor',
+					outlineOffset: '2px',
+				}}
 			>
 				<span class={visuallyHidden()}>Color value</span>
 				<span aria-hidden="true">{props.color}</span>
@@ -66,7 +71,7 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 				variant="transparent"
 				shape="square"
 				aria-label="Copy"
-				width="1lh"
+				inlineSize="1lh"
 				onClick={() => writeClipboardText(props.color)}
 			>
 				<Switch fallback={<Icon icon="heroicons-solid:clipboard" />}>
