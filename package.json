@@ -1,8 +1,18 @@
 {
 	"name": "color-compare",
+	"description": "A simple color compare tool",
+	"version": "1.0.0",
+	"license": "MIT",
 	"private": true,
-	"version": "0.0.0",
+	"author": {
+		"name": "Marco Solazzi"
+	},
 	"type": "module",
+	"packageManager": "pnpm@8.15.5",
+	"engines": {
+		"node": ">=18.15.0",
+		"pnpm": "^8.0.0"
+	},
 	"scripts": {
 		"prepare": "panda codegen",
 		"dev": "vite",
