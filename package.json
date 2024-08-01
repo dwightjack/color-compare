@@ -8,7 +8,7 @@
 		"name": "Marco Solazzi"
 	},
 	"type": "module",
-	"packageManager": "pnpm@8.15.8",
+	"packageManager": "pnpm@8.15.9",
 	"engines": {
 		"node": ">=18.15.0",
 		"pnpm": "^8.0.0"
@@ -28,7 +28,7 @@
 		"@biomejs/biome": "1.8.3",
 		"@pandacss/dev": "^0.42.0",
 		"colorjs.io": "0.5.2",
-		"lefthook": "1.7.4",
+		"lefthook": "1.7.11",
 		"typescript": "^5.4.3",
 		"vite": "^5.2.6",
 		"vite-plugin-solid": "^2.10.2"
