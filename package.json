@@ -8,7 +8,7 @@
 		"name": "Marco Solazzi"
 	},
 	"type": "module",
-	"packageManager": "pnpm@9.7.1",
+	"packageManager": "pnpm@9.9.0",
 	"engines": {
 		"node": ">=18.15.0",
 		"pnpm": "^9.0.0"
