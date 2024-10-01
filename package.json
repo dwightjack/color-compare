@@ -28,7 +28,7 @@
 		"@biomejs/biome": "1.8.3",
 		"@pandacss/dev": "^0.45.0",
 		"colorjs.io": "0.5.2",
-		"lefthook": "1.7.14",
+		"lefthook": "1.7.18",
 		"typescript": "^5.4.3",
 		"vite": "^5.2.6",
 		"vite-plugin-solid": "^2.10.2"
