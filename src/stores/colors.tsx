@@ -1,5 +1,5 @@
 import {
-	type ParentComponent,
+	type ParentProps,
 	createContext,
 	createUniqueId,
 	useContext,
@@ -62,7 +62,7 @@ export const makeColorsContext = () => createColorStore();
 type ColorsContextType = ReturnType<typeof makeColorsContext>;
 export const ColorsContext = createContext<ColorsContextType>();
 
-export const ColorsProvider: ParentComponent = (props) => {
+export function ColorsProvider(props: ParentProps) {
 	const colorStore = createColorStore();
 
 	return (
@@ -70,7 +70,7 @@ export const ColorsProvider: ParentComponent = (props) => {
 			{props.children}
 		</ColorsContext.Provider>
 	);
-};
+}
 
 export function useColors() {
 	// biome-ignore lint/style/noNonNullAssertion: <explanation>

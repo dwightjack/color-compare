@@ -1,5 +1,5 @@
 import { Icon } from '@iconify-icon/solid';
-import { type Component, type JSX, Match, Switch } from 'solid-js';
+import { type JSX, Match, Switch } from 'solid-js';
 import { HStack, styled } from '../../styled-system/jsx';
 import { visuallyHidden } from '../../styled-system/patterns';
 import { overflowEllipsis } from '../../styled-system/recipes';
@@ -13,7 +13,7 @@ export interface ColorPickerProps {
 	onInput: JSX.InputEventHandlerUnion<HTMLInputElement, InputEvent>;
 }
 
-export const ColorPicker: Component<ColorPickerProps> = (props) => {
+export function ColorPicker(props: ColorPickerProps) {
 	const [status, writeClipboardText] = createCopyToClipboard();
 
 	return (
@@ -85,4 +85,4 @@ export const ColorPicker: Component<ColorPickerProps> = (props) => {
 			</Button>
 		</HStack>
 	);
-};
+}

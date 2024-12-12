@@ -1,6 +1,6 @@
 import { Icon } from '@iconify-icon/solid';
 import Color from 'colorjs.io';
-import { type Component, Show } from 'solid-js';
+import { Show } from 'solid-js';
 import { css } from '../../styled-system/css';
 import { styled } from '../../styled-system/jsx';
 import { token } from '../../styled-system/tokens';
@@ -29,11 +29,11 @@ const Box = styled('div', {
 	},
 });
 
-export const ColorBox: Component<{
+export function ColorBox(props: {
 	color: string;
 	id: string;
 	removable?: boolean;
-}> = (props) => {
+}) {
 	const [state, actions] = useColors();
 
 	const format = () => state.format;
@@ -77,4 +77,4 @@ export const ColorBox: Component<{
 			/>
 		</Box>
 	);
-};
+}
