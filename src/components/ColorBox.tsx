@@ -3,7 +3,6 @@ import Color from 'colorjs.io';
 import { Show } from 'solid-js';
 import { css } from '../../styled-system/css';
 import { styled } from '../../styled-system/jsx';
-import { token } from '../../styled-system/tokens';
 import { useColors } from '../stores/colors';
 import { Button } from './Button';
 import { ColorPicker } from './ColorPicker';
@@ -45,17 +44,8 @@ export function ColorBox(props: {
 			.to(formatMapping[format()]?.space || format())
 			.toString({ format: format(), precision: 3 });
 
-	const textColor = () => {
-		const color = new Color(props.color);
-		const onWhite = Math.abs(color.contrast('white', 'WCAG21'));
-		const onBlack = Math.abs(color.contrast('black', 'WCAG21'));
-		return onWhite > onBlack
-			? token('colors.zinc.300')
-			: token('colors.zinc.800');
-	};
-
 	return (
-		<Box style={{ '--bg-color': props.color, '--text-color': textColor() }}>
+		<Box style={{ '--bg-color': props.color }}>
 			<Show when={props.removable}>
 				<Button
 					variant="contrast"

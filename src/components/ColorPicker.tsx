@@ -21,9 +21,10 @@ export function ColorPicker(props: ColorPickerProps) {
 			bg="white/20"
 			gap="0"
 			borderWidth="2px"
-			color="var(--text-color)"
+			// https://frontendmasters.com/blog/automatically-contrasted-colors/
+			color="lch(from var(--bg-color) calc((49.44 - l) * infinity) 0 0)"
 			alignItems="stretch"
-			borderColor="color-mix(in srgb, var(--text-color), transparent 80%)"
+			borderColor="color-mix(in lch, currentcolor, transparent 80%)"
 			borderRadius="md"
 			transition="colors"
 			transitionDuration="fast"
