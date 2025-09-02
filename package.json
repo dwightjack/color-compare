@@ -26,9 +26,9 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
-		"@pandacss/dev": "^0.53.0",
+		"@pandacss/dev": "^0.54.0",
 		"colorjs.io": "0.5.2",
-		"lefthook": "1.11.16",
+		"lefthook": "1.12.3",
 		"typescript": "^5.4.3",
 		"vite": "^6.0.0",
 		"vite-plugin-solid": "^2.10.2"
