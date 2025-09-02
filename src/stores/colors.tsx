@@ -1,7 +1,7 @@
 import {
-	type ParentProps,
 	createContext,
 	createUniqueId,
+	type ParentProps,
 	useContext,
 } from 'solid-js';
 import { createStore } from 'solid-js/store';
@@ -30,7 +30,7 @@ export function createColorStore() {
 			add() {
 				setState('colors', (colors) => [
 					...colors,
-					// biome-ignore lint/style/noNonNullAssertion: <explanation>
+					// biome-ignore lint/style/noNonNullAssertion: This is always defined
 					{ id: createUniqueId(), code: colors.at(-1)!.code },
 				]);
 			},
@@ -73,6 +73,6 @@ export function ColorsProvider(props: ParentProps) {
 }
 
 export function useColors() {
-	// biome-ignore lint/style/noNonNullAssertion: <explanation>
+	// biome-ignore lint/style/noNonNullAssertion: This is always defined
 	return useContext(ColorsContext)!;
 }
