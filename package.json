@@ -25,10 +25,10 @@
 		"solid-js": "^1.8.16"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.2.2",
+		"@biomejs/biome": "2.2.4",
 		"@pandacss/dev": "^0.54.0",
 		"colorjs.io": "0.5.2",
-		"lefthook": "1.12.3",
+		"lefthook": "1.12.4",
 		"typescript": "^5.4.3",
 		"vite": "^6.0.0",
 		"vite-plugin-solid": "^2.10.2"
