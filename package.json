@@ -8,10 +8,10 @@
 		"name": "Marco Solazzi"
 	},
 	"type": "module",
-	"packageManager": "pnpm@9.15.9",
+	"packageManager": "pnpm@11.9.0",
 	"engines": {
 		"node": ">=18.15.0",
-		"pnpm": "^9.0.0"
+		"pnpm": "^11.0.0"
 	},
 	"scripts": {
 		"prepare": "panda codegen",
