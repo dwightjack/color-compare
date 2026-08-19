@@ -1,0 +1,7 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"ignorePatterns": ["styled-system/**", "dist/**", "package.json"],
+	"singleQuote": true,
+	"sortImports": true,
+	"useTabs": true
+}

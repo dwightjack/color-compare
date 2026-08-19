@@ -1,5 +1,6 @@
 import { Icon } from '@iconify-icon/solid';
 import { For } from 'solid-js';
+
 import { css } from '../styled-system/css';
 import { styled } from '../styled-system/jsx';
 import { center } from '../styled-system/patterns';
@@ -23,9 +24,7 @@ function App() {
 			}}
 		>
 			<For each={state.colors}>
-				{(color, idx) => (
-					<ColorBox color={color.code} id={color.id} removable={idx() > 0} />
-				)}
+				{(color, idx) => <ColorBox color={color.code} id={color.id} removable={idx() > 0} />}
 			</For>
 			<styled.div class={center()} viewTimeline="--scrollFade block">
 				<Button

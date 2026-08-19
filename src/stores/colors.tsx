@@ -1,9 +1,4 @@
-import {
-	createContext,
-	createUniqueId,
-	type ParentProps,
-	useContext,
-} from 'solid-js';
+import { createContext, createUniqueId, type ParentProps, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 export const formats = ['hex', 'rgb', 'hsl', 'oklab', 'oklch'] as const;
@@ -36,9 +31,7 @@ export function createColorStore() {
 			},
 
 			remove(id: string) {
-				setState('colors', (colors) =>
-					colors.filter((color) => color.id !== id),
-				);
+				setState('colors', (colors) => colors.filter((color) => color.id !== id));
 			},
 
 			setFormat(format: Format) {
@@ -65,11 +58,7 @@ export const ColorsContext = createContext<ColorsContextType>();
 export function ColorsProvider(props: ParentProps) {
 	const colorStore = createColorStore();
 
-	return (
-		<ColorsContext.Provider value={colorStore}>
-			{props.children}
-		</ColorsContext.Provider>
-	);
+	return <ColorsContext.Provider value={colorStore}>{props.children}</ColorsContext.Provider>;
 }
 
 export function useColors() {

@@ -7,7 +7,9 @@ export function createCopyToClipboard() {
 	let id: number;
 
 	function cleanup() {
-		id && clearTimeout(id);
+		if (id) {
+			clearTimeout(id);
+		}
 	}
 
 	async function writeClipboardText(text: string) {

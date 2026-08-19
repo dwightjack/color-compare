@@ -1,0 +1,11 @@
+# Security settings
+# https://pnpm.io/blog/2025/12/05/newsroom-npm-supply-chain-security
+minimumReleaseAge: 10080 # 7 days
+
+strictDepBuilds: true
+trustPolicy: no-downgrade
+verifyDepsBeforeRun: false
+trustPolicyIgnoreAfter: 10080 # 7 days
+allowBuilds:
+  esbuild: true
+  lefthook: true

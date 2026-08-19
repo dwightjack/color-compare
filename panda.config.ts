@@ -1,4 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
+
 import { overflowEllipsis } from './panda-recipes/text';
 
 export default defineConfig({

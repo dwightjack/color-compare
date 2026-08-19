@@ -1,5 +1,8 @@
 pre-commit:
-  commands:
-    check:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+  jobs:
+    - name: JavaScript
+      glob: '*.{js,mjs,tsx,ts}'
+      run: pnpm oxlint {staged_files}
+    - name: Other files
+      glob: '*.{js,mjs,cjs,tsx,ts,hmtl,json,yaml,css}'
+      run: pnpm oxfmt --check --no-error-on-unmatched-pattern

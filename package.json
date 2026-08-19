@@ -8,29 +8,32 @@
 		"name": "Marco Solazzi"
 	},
 	"type": "module",
-	"packageManager": "pnpm@9.15.9",
+	"packageManager": "pnpm@11.22.0",
 	"engines": {
-		"node": ">=18.15.0",
-		"pnpm": "^9.0.0"
+		"node": ">=26.7.0",
+		"pnpm": "^11.22.0"
 	},
 	"scripts": {
 		"prepare": "panda codegen",
 		"dev": "vite",
-		"lint": "biome check .",
+		"lint:fix": "oxlint . --fix && oxfmt",
+		"lint": "oxlint . && oxfmt --check",
 		"build": "tsc && vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@iconify-icon/solid": "3.0.3",
-		"solid-js": "^1.9.11"
+		"solid-js": "^1.9.14"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.10",
-		"@pandacss/dev": "^1.0.0",
-		"colorjs.io": "0.6.1",
-		"lefthook": "2.1.8",
+		"@pandacss/dev": "^1.12.0",
+		"colorjs.io": "0.7.1",
+		"eslint-plugin-solid": "^0.14.5",
+		"lefthook": "2.1.10",
+		"oxfmt": "^0.63.0",
+		"oxlint": "^1.78.0",
 		"typescript": "^5.4.3",
-		"vite": "^6.0.0",
-		"vite-plugin-solid": "^2.10.2"
+		"vite": "^8.2.1",
+		"vite-plugin-solid": "^2.11.14"
 	}
 }
