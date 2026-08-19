@@ -32,7 +32,7 @@ function App() {
 					inlineSize={14}
 					fontSize="x-large"
 					variant="primary"
-					onClick={actions.add}
+					onClick={() => actions.add()}
 				>
 					<span class={css({ srOnly: true })}>Add color</span>
 					<Icon icon="heroicons-solid:plus" />
