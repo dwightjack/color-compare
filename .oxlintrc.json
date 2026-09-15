@@ -1,0 +1,21 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["typescript", "unicorn", "oxc"],
+	"categories": {
+		"correctness": "error"
+	},
+	"options": {
+		"typeAware": true,
+		"typeCheck": true
+	},
+	"rules": {
+		"consistent-type-imports": "warn",
+		"no-duplicate-imports": "warn",
+		"consistent-type-specifier-style": "warn"
+	},
+	"env": {
+		"builtin": true
+	},
+	"ignorePatterns": ["styled-system/**", "dist/**"],
+	"jsPlugins": ["eslint-plugin-solid"]
+}

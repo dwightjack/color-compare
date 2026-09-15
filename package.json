@@ -8,29 +8,34 @@
 		"name": "Marco Solazzi"
 	},
 	"type": "module",
-	"packageManager": "pnpm@9.15.9",
+	"packageManager": "pnpm@12.4.1",
 	"engines": {
-		"node": ">=18.15.0",
-		"pnpm": "^9.0.0"
+		"node": "^24.21.0",
+		"pnpm": "^11.22.0"
 	},
 	"scripts": {
 		"prepare": "panda codegen",
 		"dev": "vite",
-		"lint": "biome check .",
+		"lint:fix": "oxlint . --fix && oxfmt",
+		"lint": "oxlint . && oxfmt --check",
 		"build": "tsc && vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@iconify-icon/solid": "3.0.3",
-		"solid-js": "^1.9.11"
+		"@solidjs/web": "2.0.0-rc.0",
+		"solid-js": "^2.0.0-rc.6"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.10",
-		"@pandacss/dev": "^1.0.0",
-		"colorjs.io": "0.6.1",
-		"lefthook": "2.1.8",
-		"typescript": "^5.4.3",
-		"vite": "^6.0.0",
-		"vite-plugin-solid": "^2.10.2"
+		"@pandacss/dev": "^1.12.1",
+		"@solidjs/vite-plugin": "3.0.0-next.39",
+		"colorjs.io": "0.7.1",
+		"eslint-plugin-solid": "^0.17.0",
+		"lefthook": "2.1.12",
+		"oxfmt": "^0.67.0",
+		"oxlint": "^1.82.0",
+		"oxlint-tsgolint": "^7.0.2001",
+		"typescript": "^7.0.2",
+		"vite": "^8.2.2"
 	}
 }
