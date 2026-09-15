@@ -1,11 +1,11 @@
 import { Icon } from '@iconify-icon/solid';
-import { type JSX, Match, Switch } from 'solid-js';
+import { JSX } from '@solidjs/web/jsx-runtime';
+import { Match, Switch } from 'solid-js';
 
-import { HStack, styled } from '../../styled-system/jsx';
-import { visuallyHidden } from '../../styled-system/patterns';
-import { overflowEllipsis } from '../../styled-system/recipes';
+import { css, cx } from '../../styled-system/css';
+import { hstack } from '../../styled-system/patterns';
+import { overflowEllipsis, button } from '../../styled-system/recipes';
 import { createCopyToClipboard } from '../signals/copy';
-import { Button } from './Button';
 
 export interface ColorPickerProps {
 	inputColor: string;
@@ -18,62 +18,78 @@ export function ColorPicker(props: ColorPickerProps) {
 	const [status, writeClipboardText] = createCopyToClipboard();
 
 	return (
-		<HStack
-			bg="white/20"
-			gap="0"
-			borderWidth="2px"
-			// https://frontendmasters.com/blog/automatically-contrasted-colors/
-			color="lch(from var(--bg-color) calc((49.44 - l) * infinity) 0 0)"
-			alignItems="stretch"
-			borderColor="color-mix(in lch, currentcolor, transparent 80%)"
-			borderRadius="md"
-			transition="colors"
-			transitionDuration="fast"
-			lineHeight="2"
+		<div
+			class={hstack({
+				gap: '0',
+				bg: 'white/20',
+				borderWidth: '2px',
+				// https://frontendmasters.com/blog/automatically-contrasted-colors/
+				color: 'lch(from var(--bg-color) calc((49.44 - l) * infinity) 0 0)',
+				alignItems: 'stretch',
+				borderColor: 'color-mix(in lch, currentcolor, transparent 80%)',
+				borderRadius: 'md',
+				transition: 'colors',
+				transitionDuration: 'fast',
+				lineHeight: '2',
+			})}
 		>
-			<Button
-				variant="transparent"
-				shape="square"
-				inlineSize="1lh"
+			<button
+				type="button"
+				class={cx(
+					button({ variant: 'transparent', shape: 'square' }),
+					css({
+						inlineSize: '1lh',
+					}),
+				)}
 				onClick={props.onColorSpaceToggle}
 			>
-				<span class={visuallyHidden()}>Click to toggle the color space</span>
+				<span class={css({ srOnly: true })}>Click to toggle the color space</span>
 				<Icon icon="heroicons-solid:refresh" />
-			</Button>
-			<styled.span
-				display="block"
-				inlineSize="1"
-				blockSize="0.5lh"
-				borderColor="inherit"
-				borderInlineEndWidth="1"
-				alignSelf="center"
+			</button>
+			<span
+				class={css({
+					display: 'block',
+					inlineSize: '1',
+					blockSize: '0.5lh',
+					borderColor: 'inherit',
+					borderInlineEndWidth: '1',
+					alignSelf: 'center',
+				})}
 			/>
-			<styled.label
-				flexGrow="1"
-				cursor="pointer"
-				paddingInlineStart="4"
-				class={overflowEllipsis()}
-				_focusWithin={{
-					outline: 'var(--outline-focus)',
-					outlineColor: 'currentcolor',
-					outlineOffset: '2px',
-				}}
+			<label
+				class={cx(
+					overflowEllipsis(),
+					css({
+						flexGrow: '1',
+						cursor: 'pointer',
+						paddingInlineStart: '4',
+						_focusWithin: {
+							outline: 'var(--outline-focus)',
+							outlineColor: 'currentcolor',
+							outlineOffset: '2px',
+						},
+					}),
+				)}
 			>
-				<span class={visuallyHidden()}>Color value</span>
+				<span class={css({ srOnly: true })}>Color value</span>
 				<span aria-hidden="true">{props.color}</span>
 				<input
 					type="color"
 					name="color"
-					class={visuallyHidden()}
+					class={css({ srOnly: true })}
 					value={props.inputColor}
 					onInput={props.onInput}
 				/>
-			</styled.label>
-			<Button
-				variant="transparent"
-				shape="square"
+			</label>
+			<button
+				type="button"
+				class={cx(
+					button({ variant: 'transparent', shape: 'square' }),
+					css({
+						inlineSize: '1lh',
+					}),
+				)}
 				aria-label="Copy"
-				inlineSize="1lh"
 				onClick={() => writeClipboardText(props.color)}
 			>
 				<Switch fallback={<Icon icon="heroicons-solid:clipboard" />}>
@@ -84,7 +100,7 @@ export function ColorPicker(props: ColorPickerProps) {
 						<Icon icon="heroicons-solid:heroicons-solid:x-circle" />
 					</Match>
 				</Switch>
-			</Button>
-		</HStack>
+			</button>
+		</div>
 	);
 }

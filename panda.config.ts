@@ -1,6 +1,7 @@
 import { defineConfig } from '@pandacss/dev';
 
-import { overflowEllipsis } from './panda-recipes/text';
+import { button } from './panda-recipes/button.recipe';
+import { overflowEllipsis } from './panda-recipes/text.recipe';
 
 export default defineConfig({
 	// Whether to use css reset
@@ -17,11 +18,10 @@ export default defineConfig({
 		extend: {
 			recipes: {
 				overflowEllipsis,
+				button,
 			},
 		},
 	},
-
-	jsxFramework: 'solid',
 
 	// The output directory for your css system
 	outdir: 'styled-system',

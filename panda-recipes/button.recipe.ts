@@ -1,6 +1,8 @@
-import { styled } from '../../styled-system/jsx';
+import { defineRecipe } from '@pandacss/dev';
 
-export const Button = styled('button', {
+export const button = defineRecipe({
+	className: 'button',
+	description: 'Button styles',
 	base: {
 		cursor: 'pointer',
 		transition: 'colors',
