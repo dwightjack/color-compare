@@ -1,5 +1,4 @@
-import { createContext, createUniqueId, type ParentProps, useContext } from 'solid-js';
-import { createStore } from 'solid-js';
+import { type ParentProps, createContext, createUniqueId, useContext, createStore } from 'solid-js';
 
 export const formats = ['hex', 'rgb', 'hsl', 'oklab', 'oklch'] as const;
 export type Format = (typeof formats)[number];

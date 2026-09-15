@@ -5,9 +5,14 @@
 		"correctness": "error"
 	},
 	"options": {
-		"typeAware": true
+		"typeAware": true,
+		"typeCheck": true
 	},
-	"rules": {},
+	"rules": {
+		"consistent-type-imports": "warn",
+		"no-duplicate-imports": "warn",
+		"consistent-type-specifier-style": "warn"
+	},
 	"env": {
 		"builtin": true
 	},

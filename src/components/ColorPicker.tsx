@@ -1,10 +1,10 @@
 import { Icon } from '@iconify-icon/solid';
-import { JSX } from '@solidjs/web/jsx-runtime';
+import type { JSX } from '@solidjs/web/jsx-runtime';
 import { Match, Switch } from 'solid-js';
 
 import { css, cx } from '../../styled-system/css';
 import { hstack } from '../../styled-system/patterns';
-import { overflowEllipsis, button } from '../../styled-system/recipes';
+import { button, overflowEllipsis } from '../../styled-system/recipes';
 import { createCopyToClipboard } from '../signals/copy';
 
 export interface ColorPickerProps {
