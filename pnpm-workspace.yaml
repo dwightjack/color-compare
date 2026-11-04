@@ -9,3 +9,6 @@ trustPolicyIgnoreAfter: 10080 # 7 days
 allowBuilds:
   esbuild: true
   lefthook: true
+minimumReleaseAgeExclude:
+  # Renovate security update: vite@8.2.4
+  - vite@8.2.4
