@@ -1,5 +1,6 @@
 /* @refresh reload */
 import { render } from '@solidjs/web';
+import 'iconify-icon';
 
 import App from './App';
 

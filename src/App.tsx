@@ -1,4 +1,3 @@
-import { Icon } from '@iconify-icon/solid';
 import { For } from 'solid-js';
 
 import { css, cx } from '../styled-system/css';
@@ -43,7 +42,7 @@ function App() {
 					onClick={() => actions.add()}
 				>
 					<span class={css({ srOnly: true })}>Add color</span>
-					<Icon icon="heroicons-solid:plus" />
+					<iconify-icon icon="heroicons-solid:plus" />
 				</button>
 				<div
 					class={css({
@@ -65,7 +64,7 @@ function App() {
 						rounded: 'full',
 					})}
 				>
-					<Icon icon="heroicons-solid:chevron-double-down" />
+					<iconify-icon icon="heroicons-solid:chevron-double-down" />
 				</div>
 			</div>
 		</div>

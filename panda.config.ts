@@ -4,6 +4,8 @@ import { button } from './panda-recipes/button.recipe';
 import { overflowEllipsis } from './panda-recipes/text.recipe';
 
 export default defineConfig({
+	presets: ['@pandacss/preset-base', '@pandacss/preset-panda'],
+
 	// Whether to use css reset
 	preflight: true,
 
@@ -25,6 +27,4 @@ export default defineConfig({
 
 	// The output directory for your css system
 	outdir: 'styled-system',
-
-	lightningcss: true,
 });
