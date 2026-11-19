@@ -1,4 +1,3 @@
-import { Icon } from '@iconify-icon/solid';
 import type { JSX } from '@solidjs/web/jsx-runtime';
 import { Match, Switch } from 'solid-js';
 
@@ -44,7 +43,7 @@ export function ColorPicker(props: ColorPickerProps) {
 				onClick={props.onColorSpaceToggle}
 			>
 				<span class={css({ srOnly: true })}>Click to toggle the color space</span>
-				<Icon icon="heroicons-solid:refresh" />
+				<iconify-icon icon="heroicons-solid:refresh" />
 			</button>
 			<span
 				class={css({
@@ -92,12 +91,12 @@ export function ColorPicker(props: ColorPickerProps) {
 				aria-label="Copy"
 				onClick={() => writeClipboardText(props.color)}
 			>
-				<Switch fallback={<Icon icon="heroicons-solid:clipboard" />}>
+				<Switch fallback={<iconify-icon icon="heroicons-solid:clipboard" />}>
 					<Match when={status() === 'success'}>
-						<Icon icon="heroicons-solid:check-circle" />
+						<iconify-icon icon="heroicons-solid:check-circle" />
 					</Match>
 					<Match when={status() === 'error'}>
-						<Icon icon="heroicons-solid:heroicons-solid:x-circle" />
+						<iconify-icon icon="heroicons-solid:heroicons-solid:x-circle" />
 					</Match>
 				</Switch>
 			</button>

@@ -1,4 +1,3 @@
-import { Icon } from '@iconify-icon/solid';
 import Color from 'colorjs.io';
 import { Show } from 'solid-js';
 
@@ -55,7 +54,7 @@ export function ColorBox(props: { color: string; id: string; removable?: boolean
 					onClick={() => actions.remove(props.id)}
 				>
 					<span class={css({ srOnly: true })}>Remove</span>
-					<Icon icon="heroicons-solid:x" />
+					<iconify-icon icon="heroicons-solid:x" />
 				</button>
 			</Show>
 			<ColorPicker
